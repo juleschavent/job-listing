@@ -5,6 +5,11 @@ main {
   position: relative;
 }
 
+/* ____________________DISPLAY SWITCH TYPE_____________________ */
+.displayType {
+  display: none;
+}
+
 /* ____________________ELEMENT_____________________ */
 .element {
   background-color: white;
@@ -107,31 +112,31 @@ main {
 
 /* ____________________FILTER_____________________ */
 .filter__container {
-    background-color: white;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    padding: 1rem 2rem;
-    box-shadow: 0 .5rem 1rem hsla(180, 14%, 20%, .5);
-    border-radius: 1rem;
-    margin-bottom: 4rem;
-    margin-top: -10rem;
+  background-color: white;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 40px;
+  padding: 1rem 2rem;
+  box-shadow: 0 .5rem 1rem hsla(180, 14%, 20%, .5);
+  border-radius: 1rem;
+  margin-bottom: 7rem;
+  margin-top: -10rem;
 }
 
 .filter__tags {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .filter__tag {
-    display: grid;
-    grid-template-columns: 70% 30%;
-    background-color: hsl(180, 31%, 95%);
-    margin: .5rem;
-    color: hsl(180, 29%, 50%);
-    border-radius: .4rem;
-    overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 35px;
+  background-color: hsl(180, 31%, 95%);
+  margin: .5rem;
+  color: hsl(180, 29%, 50%);
+  border-radius: .4rem;
+  overflow: hidden;
 }
 
 .filter__tag__type {
@@ -143,13 +148,14 @@ main {
 .filter__tag__close {
   background-color: hsl(180, 29%, 50%);
   height: 100%;
-  width: 100%;
+  width: fit-content;
   padding: 1rem;
   cursor: pointer;
   transition: .1s ease;
 
   &:hover {
-    background-color: hsl(180, 14%, 20%);;
+    background-color: hsl(180, 14%, 20%);
+    ;
   }
 }
 
@@ -178,4 +184,69 @@ main {
 
 .--isFeatured-- {
   border-left: .8rem solid hsl(180, 29%, 50%);
+}
+
+/* ____________________BREAKPOINT MEDIUM SIZE_____________________ */
+@media screen and (min-width: 650px) {
+
+  /* ____________________MODIFIER WHEN GRID DISPLAY_____________________ */
+  .--isGrid-- {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .element--grid {
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .element__logo--grid {
+    width: 9rem;
+    margin-right: 1rem;
+    position: initial;
+  }
+
+  .element__desc--grid {
+    margin: 0;
+    margin-right: 2rem;
+    border: none;
+  }
+
+  .element__tags--grid {
+    justify-content: flex-end;
+  }
+
+  /* ____________________DISPLAY TOGGLE_____________________ */
+  .displayType {
+    display: block;
+    position: absolute;
+    top: -4rem;
+    right: 0;
+  }
+
+  .displayType__icon {
+    font-size: 2rem;
+    color: hsl(180, 29%, 50%);
+    transition: .1s ease;
+    cursor: pointer;
+
+    &:hover {
+      font-size: 3rem;
+    }
+  }
+
+  .--isListed-- {
+    top: 9rem;
+  }
+}
+
+/* ____________________BREAKPOINT LARGE SIZE_____________________ */
+@media screen and (min-width: 1000px) {
+  .--isGrid-- {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
 }

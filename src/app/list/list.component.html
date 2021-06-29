@@ -1,0 +1,46 @@
+<main>
+
+    <!-- FILTERED TAG CONTAINER -->
+    <section *ngIf="isFiltered === true" class="filter__container">
+        <div class="filter__tags">
+            <div *ngFor="let element of filters" class="filter__tag">
+                <h2 class="filter__tag__type">{{element}}</h2>
+                <img (click)="removeRole(element)" class="filter__tag__close" src="../../assets/images/icon-remove.svg" alt="remove tag">
+            </div>
+        </div>
+        <button (click)="clearFilters()" class="filter__clear">Clear</button>
+    </section>
+
+
+    <!-- ELEMENT OF LIST -->
+    <article *ngFor="let element of listItem" [ngClass]="{'--isFeatured--' : element.featured}" class="element">
+
+        <!-- DETAILS OF ELEMENT -->
+        <section class="element__desc --flex--">
+            <img class="element__logo" src="../../assets{{element.logo}}" alt="logo photosnap">
+            <div>
+                <div class="--flex-- --mb--">
+                    <h2 class="element__company">{{element.company}}</h2>
+                    <span class="element__isNew" *ngIf="element.new === true">NEW!</span>
+                    <span class="element__isFeatured" *ngIf="element.featured === true">FEATURED</span>
+                </div>
+                <h2 class="element__job --mb--">{{element.position}}</h2>
+                <div class="element__details --flex-- --mb--">
+                    <h4>{{element.postedAt}}</h4>
+                    <h4>{{element.contract}}</h4>
+                    <h4>{{element.location}}</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAGS OF ELEMENT -->
+        <section class="element__tags --flex--">
+            <h2 class="element__tag" (click)="filterRole(element.role)">{{element.role}}</h2>
+            <h2 class="element__tag" (click)="filterLevel(element.level)">{{element.level}}</h2>
+            <h2 class="element__tag" (click)="filterLang(lang)" *ngFor="let lang of element.languages">{{lang}}</h2>
+            <h2 class="element__tag" (click)="filterTool(tool)" *ngFor="let tool of element.tools">{{tool}}</h2>
+        </section>
+
+    </article>
+
+</main>
